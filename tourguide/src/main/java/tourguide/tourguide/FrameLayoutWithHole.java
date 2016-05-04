@@ -24,6 +24,10 @@ import java.util.ArrayList;
  * TODO: document your custom view class.
  */
 public class FrameLayoutWithHole extends FrameLayout {
+
+    // this gives extra padding to the hole in overlay
+    private static final int PADDING_MULTIPLIER = 5;
+
     private TextPaint mTextPaint;
     private Activity mActivity;
     private TourGuide.MotionType mMotionType;
@@ -92,7 +96,7 @@ public class FrameLayoutWithHole extends FrameLayout {
         mPos = pos;
 
         mDensity = context.getResources().getDisplayMetrics().density;
-        int padding = (int)(10 * mDensity);
+        int padding = (int)(PADDING_MULTIPLIER * mDensity);
 
         if (mViewHole.getHeight() > mViewHole.getWidth()) {
             mRadius = mViewHole.getHeight()/2 + padding;

@@ -57,6 +57,10 @@ public class Sequence {
         return mIsShowing;
     }
 
+    public void setCurrentSequence(int currentSequence) {
+        this.mCurrentSequence = currentSequence;
+    }
+
     public int getCurrentSequence() {
         return mCurrentSequence;
     }
