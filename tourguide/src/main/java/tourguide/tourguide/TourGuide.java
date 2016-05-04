@@ -205,12 +205,23 @@ public class TourGuide {
     private void startView(){
         /* Initialize a frame layout with a hole */
         mFrameLayout = new FrameLayoutWithHole(mActivity, mHighlightedView, mMotionType, mOverlay);
+
+        // We add a finish button if there exist one, can also be used to add other custom views
+        if (mFrameLayout.getFinishButton() != null) {
+
+            View finishView = mFrameLayout.getFinishButton();
+            FrameLayout.LayoutParams layoutParams=new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParams.gravity=Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM;
+            mFrameLayout.addView(finishView);
+        }
+
         /* handle click disable */
         handleDisableClicking(mFrameLayout);
 
         /* setup floating action button */
         if (mPointer != null) {
             FloatingActionButton fab = setupAndAddFABToFrameLayout(mFrameLayout);
+            fab.setVisibility(View.INVISIBLE);
             performAnimationOn(fab);
         }
         setupFrameLayout();
@@ -280,6 +291,7 @@ public class TourGuide {
             int [] pos = new int[2];
             mHighlightedView.getLocationOnScreen(pos);
             int targetViewX = pos[0];
+            targetViewX = targetViewX + mHighlightedView.getMeasuredWidth()/2;  // align tooltip with center of target view
             final int targetViewY = pos[1];
 
             // get measured size of tooltip
@@ -289,7 +301,13 @@ public class TourGuide {
 
             Point resultPoint = new Point(); // this holds the final position of tooltip
             float density = mActivity.getResources().getDisplayMetrics().density;
-            final float adjustment = 10 * density; //adjustment is that little overlapping area of tooltip and targeted button
+
+            final float adjustment;
+            if (mToolTip.needsAdjustment()) {
+                adjustment = 10 * density; //adjustment is that little overlapping area of tooltip and targeted button
+            } else {
+                adjustment = 0;
+            }
 
             // calculate x position, based on gravity, tooltipMeasuredWidth, parent max width, x position of target view, adjustment
             if (toolTipMeasuredWidth > parent.getWidth()){

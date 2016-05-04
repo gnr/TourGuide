@@ -92,7 +92,7 @@ public class FrameLayoutWithHole extends FrameLayout {
         mPos = pos;
 
         mDensity = context.getResources().getDisplayMetrics().density;
-        int padding = (int)(20 * mDensity);
+        int padding = (int)(10 * mDensity);
 
         if (mViewHole.getHeight() > mViewHole.getWidth()) {
             mRadius = mViewHole.getHeight()/2 + padding;
@@ -300,5 +300,10 @@ public class FrameLayoutWithHole extends FrameLayout {
      */
     public int getScreenHeight(Activity activity){
         return activity.getResources().getDisplayMetrics().heightPixels;
+    }
+
+
+    public View getFinishButton() {
+        return mOverlay.getFinishButton();
     }
 }

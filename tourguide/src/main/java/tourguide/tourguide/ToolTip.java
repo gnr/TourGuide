@@ -20,18 +20,20 @@ public class ToolTip {
     public View.OnClickListener mOnClickListener;
     public ViewGroup mCustomView;
 
+    private boolean mNeedsAdjustment = false;
+
     public ToolTip(){
         /* default values */
         mTitle = "";
         mDescription = "";
-        mBackgroundColor = Color.parseColor("#3498db");
+        mBackgroundColor = Color.parseColor("#EDEDED");
         mTextColor = Color.parseColor("#FFFFFF");
 
         mEnterAnimation = new AlphaAnimation(0f, 1f);
         mEnterAnimation.setDuration(1000);
         mEnterAnimation.setFillAfter(true);
         mEnterAnimation.setInterpolator(new BounceInterpolator());
-        mShadow = true;
+        mShadow = false;
 
         // TODO: exit animation
         mGravity = Gravity.CENTER;
@@ -125,6 +127,16 @@ public class ToolTip {
 
     public ToolTip setCustomView(ViewGroup view) {
         mCustomView = view;
+        return this;
+    }
+
+    public boolean needsAdjustment() {
+        return  mNeedsAdjustment;
+    }
+
+    // set to true to have overlapping area of tooltip and targeted button
+    public ToolTip setNeedsAdjustment(boolean needsAdjustment) {
+        this.mNeedsAdjustment = needsAdjustment;
         return this;
     }
 }

@@ -15,7 +15,7 @@ public class Sequence {
     boolean mDisableTargetButton;
     public int mCurrentSequence;
     ChainTourGuide mParentTourGuide;
-
+    boolean mIsShowing;
     /**
      * {@link ContinueMethod#Overlay} -
      * {@link ContinueMethod#OverlayListener} -
@@ -51,6 +51,14 @@ public class Sequence {
                 };
             }
         }
+    }
+
+    public boolean isShowing() {
+        return mIsShowing;
+    }
+
+    public int getCurrentSequence() {
+        return mCurrentSequence;
     }
 
     public ChainTourGuide getNextTourGuide() {

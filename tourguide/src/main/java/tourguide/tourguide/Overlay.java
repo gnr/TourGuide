@@ -16,13 +16,14 @@ public class Overlay {
     public View.OnClickListener mOnClickListener;
     public int mHoleRadius = NOT_SET;
     public final static int NOT_SET = -1;
+    private View mFinishView;
 
     public enum Style {
         Circle, Rectangle, NoHole
     }
 
     public Overlay() {
-        this(true, Color.parseColor("#55000000"), Style.Circle);
+        this(true, Color.parseColor("#DD000000"), Style.Circle);
     }
 
     public Overlay(boolean disableClick, int backgroundColor, Style style) {
@@ -107,5 +108,14 @@ public class Overlay {
     public Overlay setHoleRadius(int holeRadius) {
         mHoleRadius = holeRadius;
         return this;
+    }
+
+    public Overlay setFinishButton(View finishView) {
+        this.mFinishView = finishView;
+        return this;
+    }
+
+    public View getFinishButton() {
+        return mFinishView;
     }
 }

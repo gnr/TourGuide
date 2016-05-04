@@ -69,6 +69,9 @@ public class ChainTourGuide extends TourGuide {
 
             setupView();
             mSequence.mCurrentSequence++;
+            mSequence.mIsShowing = true;
+        } else {
+            mSequence.mIsShowing = false;
         }
         return this;
     }
