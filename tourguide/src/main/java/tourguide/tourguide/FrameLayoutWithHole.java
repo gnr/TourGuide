@@ -2,6 +2,7 @@ package tourguide.tourguide;
 
 import android.animation.AnimatorSet;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -36,7 +37,7 @@ public class FrameLayoutWithHole extends FrameLayout {
     Bitmap mEraserBitmap;
     private Canvas mEraserCanvas;
     private Paint mPaint;
-    private Paint transparentPaint;
+    private Paint mTransparentPaint;
     private View mViewHole; // This is the targeted view to be highlighted, where the hole should be placed
     private int mRadius;
     private int [] mPos;
@@ -44,6 +45,18 @@ public class FrameLayoutWithHole extends FrameLayout {
     private Overlay mOverlay;
 
     private ArrayList<AnimatorSet> mAnimatorSetArrayList;
+
+    public FrameLayoutWithHole(Context context) {
+        super(context);
+    }
+
+    public FrameLayoutWithHole(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public FrameLayoutWithHole(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+    }
 
     public void setViewHole(View viewHole) {
         this.mViewHole = viewHole;
@@ -127,9 +140,9 @@ public class FrameLayoutWithHole extends FrameLayout {
 
         mPaint = new Paint();
         mPaint.setColor(0xcc000000);
-        transparentPaint = new Paint();
-        transparentPaint.setColor(getResources().getColor(android.R.color.transparent));
-        transparentPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+        mTransparentPaint = new Paint();
+        mTransparentPaint.setColor(getResources().getColor(android.R.color.transparent));
+        mTransparentPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
 
         mEraser = new Paint();
         mEraser.setColor(0xFFFFFFFF);
