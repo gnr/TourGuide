@@ -28,14 +28,14 @@ Properties getGradleProperties(){
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion "28.0.3"
 
     def gradleProps = getGradleProperties()
     defaultConfig {
         applicationId "tourguide.tourguide"
         minSdkVersion 15
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode gradleProps['VERSION_CODE'].toInteger()
         versionName gradleProps['VERSION_NAME']
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -57,9 +57,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:27.1.1'
+    compile 'com.android.support:appcompat-v7:28.0.0'
     /* For navigation view (drawer) */
-    compile 'com.android.support:design:27.1.1'
+    compile 'com.android.support:design:28.0.0'
     compile project(':tourguide')
 //    compile ('com.github.worker8:tourguide:1.0.16-SNAPSHOT@aar'){
 //        transitive=true
