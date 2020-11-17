@@ -3,7 +3,7 @@ package tourguide.tourguide;
 import android.app.Activity;
 import android.graphics.Point;
 import android.os.Build;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
