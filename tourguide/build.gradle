@@ -19,7 +19,8 @@ android {
         minSdkVersion 16
         targetSdkVersion 32
     }
-    lintOptions {
+    namespace 'tourguide.tourguide'
+    lint {
         abortOnError false
     }
 }
