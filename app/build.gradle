@@ -28,14 +28,14 @@ Properties getGradleProperties(){
 }
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
     buildToolsVersion "33.0.1"
 
     def gradleProps = getGradleProperties()
     defaultConfig {
         applicationId "tourguide.tourguide"
         minSdkVersion 16
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode gradleProps['VERSION_CODE'].toInteger()
         versionName gradleProps['VERSION_NAME']
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
