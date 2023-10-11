@@ -7,7 +7,7 @@ buildscript {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdk 34
 
     buildTypes {
         debug {}
