@@ -17,7 +17,7 @@ android {
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 34
+        targetSdkVersion 33
     }
     namespace 'tourguide.tourguide'
     lint {
