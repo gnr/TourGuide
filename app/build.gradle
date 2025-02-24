@@ -29,7 +29,6 @@ Properties getGradleProperties(){
 
 android {
     compileSdk 34
-    buildToolsVersion "34.0.0"
 
     def gradleProps = getGradleProperties()
     defaultConfig {
